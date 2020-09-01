@@ -14,6 +14,12 @@ class CSVTest {
     }
 
     @Test
+    void listTab() {
+        final List<List<String>> list = CSV.list("/csv-tab.txt", "\t");
+        assertEquals(List.of(List.of("1", "2", "3"), List.of("4", "5", "6")), list);
+    }
+
+    @Test
     void flatList() {
         final List<String> list = CSV.flatList("/csv.txt");
         assertEquals(List.of("1", "2", "3", "4", "5", "6"), list);
