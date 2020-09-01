@@ -36,4 +36,8 @@ public class ResourceLines {
     public static List<String> list(String resourceName) {
         return stream(resourceName).collect(Collectors.toList());
     }
+
+    public static List<Integer> intList(String resourceName) {
+        return stream(resourceName).map(Integer::parseInt).collect(Collectors.toList());
+    }
 }

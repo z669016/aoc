@@ -26,6 +26,11 @@ class ResourceLinesTest {
 
     @Test
     void list() {
-        assertEquals(List.of("A", "B", "C", "D", "E"), ResourceLines.list("/file.txt"));
+        assertEquals(List.of("1", "2", "3", "4", "5"), ResourceLines.list("/file.txt"));
+    }
+
+    @Test
+    void intList() {
+        assertEquals(List.of(1, 2, 3, 4, 5), ResourceLines.intList("/file.txt"));
     }
 }
