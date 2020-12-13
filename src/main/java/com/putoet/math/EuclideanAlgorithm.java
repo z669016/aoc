@@ -1,5 +1,7 @@
 package com.putoet.math;
 
+import java.util.List;
+
 public class EuclideanAlgorithm {
     public static long gcd(long number1, long number2) {
         if (number1 == 0 || number2 == 0) {
@@ -20,5 +22,13 @@ public class EuclideanAlgorithm {
             long gcd = gcd(number1, number2);
             return Math.abs(number1 * number2) / gcd;
         }
+    }
+
+    public static long gcd(List<Long> numbers) {
+        return numbers.stream().reduce(0L, EuclideanAlgorithm::gcd);
+    }
+
+    public static long lcm(List<Long> numbers) {
+        return numbers.stream().reduce(1L, (x, y) -> x * (y / gcd(x, y)));
     }
 }

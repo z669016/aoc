@@ -17,3 +17,9 @@ Contains
 ## Package com.putoet.math
 Contains
 - EuclideanAlgorithm: a class to calculate greatest-common-denominator, or Least Common Multiple
+
+## Package com.putoet.grid
+Contains 
+- Grid: a basic grid class based on a two dimensional character array
+- GridUtils: utility classes for manipulating a two dimensional character array
+- Point: a class representing a point in a grid
