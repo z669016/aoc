@@ -44,4 +44,8 @@ public class ResourceLines {
     public static List<Integer> intList(String resourceName) {
         return stream(resourceName).map(Integer::parseInt).collect(Collectors.toList());
     }
+
+    public static List<Long> longList(String resourceName) {
+        return stream(resourceName).map(Long::parseLong).collect(Collectors.toList());
+    }
 }

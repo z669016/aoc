@@ -13,3 +13,7 @@ Contains
 ## Package com.putoet.statistics
 Contains
 - Permutator: A generic class with methods to create permutations of combinations of ```List``` of elements
+
+## Package com.putoet.math
+Contains
+- EuclideanAlgorithm: a class to calculate greatest-common-denominator, or Least Common Multiple
