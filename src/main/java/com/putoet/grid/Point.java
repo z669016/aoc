@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Point {
     public static final Point ORIGIN = Point.of(0, 0);
@@ -51,16 +52,7 @@ public class Point {
     }
 
     public List<Point> adjacend() {
-        return List.of(
-                Point.of(x + 1, y),
-                Point.of(x + 1, y + 1),
-                Point.of(x, y + 1),
-                Point.of(x - 1, y + 1),
-                Point.of(x - 1, y),
-                Point.of(x - 1, y - 1),
-                Point.of(x, y - 1),
-                Point.of(x + 1, y - 1)
-        );
+        return directions(false).stream().map(p -> p.add(this)).collect(Collectors.toList());
     }
 
     public int manhattanDistance(Point other) {

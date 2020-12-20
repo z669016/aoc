@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PointTest {
 
@@ -18,12 +19,14 @@ class PointTest {
 
     @Test
     void add() {
-        assertEquals(Point.of(3,7), Point.of(1,9).add(Point.of(2, -2)));
+        assertEquals(Point.of(3, 7), Point.of(1, 9).add(Point.of(2, -2)));
     }
 
     @Test
     void adjacent() {
-        assertEquals(List.of(
+        final List<Point> adjacend = Point.ORIGIN.adjacend();
+        assertEquals(8, adjacend.size());
+        assertTrue(adjacend.containsAll(List.of(
                 Point.of(1, 0),
                 Point.of(1, 1),
                 Point.of(0, 1),
@@ -32,6 +35,6 @@ class PointTest {
                 Point.of(-1, -1),
                 Point.of(0, -1),
                 Point.of(1, -1)
-        ), Point.ORIGIN.adjacend());
+        )));
     }
 }

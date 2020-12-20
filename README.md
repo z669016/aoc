@@ -23,3 +23,4 @@ Contains
 - Grid: a basic grid class based on a two dimensional character array
 - GridUtils: utility classes for manipulating a two dimensional character array
 - Point: a class representing a point in a grid
+- Point3D: a class representing a point in a 3 dimentional grid

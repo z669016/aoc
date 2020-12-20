@@ -56,6 +56,10 @@ public class Grid {
     public int maxY() { return maxY; }
     public char[][] grid() { return grid; }
 
+    public Grid rotate() {
+        return new Grid(minY, maxY, minX, maxX, GridUtils.rotate(grid));
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();

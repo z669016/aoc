@@ -45,6 +45,20 @@ public class GridUtils {
         return largerGrid;
     }
 
+    public static char[][] rotate(char[][] grid) {
+        final int sizeY = grid.length;
+        final int sizeX = grid[0].length;
+
+        final char[][] rotated = new char[sizeX][sizeY];
+        for (int y = 0; y < sizeY; y++) {
+            for (int x = 0;x < sizeX; x++) {
+                rotated[x][sizeY - y - 1] = grid[y][x];
+            }
+        }
+
+        return rotated;
+    }
+
     public static boolean gridEquals(char[][] a, char[][] b) {
         if (a.length != b.length)
             return false;
