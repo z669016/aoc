@@ -22,6 +22,15 @@ public class GridUtils {
         return grid;
     }
 
+    public static char[][] copy(char[][] grid) {
+        final char[][] copy = new char[grid.length][grid[0].length];
+        for (int y = 0; y < grid.length; y++) {
+            System.arraycopy(grid[y], 0, copy[y], 0, grid[y].length);
+        }
+
+        return copy;
+    }
+
     public static char[][] grow(char[][] grid, char init) {
         final int largerSize = grid.length * 3;
         final char[][] largerGrid = new char[largerSize][largerSize];

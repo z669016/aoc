@@ -20,6 +20,13 @@ class GridUtilsTest {
     ));
 
     @Test
+    void copy() {
+        final char[][] copy = GridUtils.copy(NUMBERS);
+        assertFalse(NUMBERS == copy);
+        assertTrue(GridUtils.gridEquals(copy, NUMBERS));
+    }
+
+    @Test
     void of() {
         final String s = GridUtils.toString(NUMBERS);
         assertEquals("123456789", s);
