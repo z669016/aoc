@@ -51,4 +51,24 @@ class GridUtilsTest {
 
         assertTrue(GridUtils.gridEquals(rotated, ROTATED));
     }
+
+    @Test
+    void flipHorizontally() {
+        final char[][] flipped = GridUtils.of(List.of(
+                "789",
+                "456",
+                "123"
+        ));
+        assertTrue(GridUtils.gridEquals(flipped, GridUtils.flipHorizontally(NUMBERS)));
+    }
+
+    @Test
+    void flipVertically() {
+        final char[][] flipped = GridUtils.of(List.of(
+                "321",
+                "654",
+                "987"
+        ));
+        assertTrue(GridUtils.gridEquals(flipped, GridUtils.flipVertically(NUMBERS)));
+    }
 }

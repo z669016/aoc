@@ -59,6 +59,32 @@ public class GridUtils {
         return rotated;
     }
 
+    public static char[][] flipHorizontally(char[][] grid) {
+        final int sizeY = grid.length;
+        final int sizeX = grid[0].length;
+
+        final char[][] flipped = new char[sizeY][sizeX];
+        for (int y = 0; y < sizeY; y++) {
+            System.arraycopy(grid[y], 0, flipped[sizeY - y - 1], 0, sizeX);
+        }
+
+        return flipped;
+    }
+
+    public static char[][] flipVertically(char[][] grid) {
+        final int sizeY = grid.length;
+        final int sizeX = grid[0].length;
+
+        final char[][] flipped = new char[sizeY][sizeX];
+        for (int y = 0; y < sizeY; y++) {
+            for (int x = 0;x < sizeX; x++) {
+                flipped[y][sizeX - x - 1] = grid[y][x];
+            }
+        }
+
+        return flipped;
+    }
+
     public static boolean gridEquals(char[][] a, char[][] b) {
         if (a.length != b.length)
             return false;

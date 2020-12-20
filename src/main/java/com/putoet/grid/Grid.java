@@ -56,6 +56,14 @@ public class Grid {
     public int maxY() { return maxY; }
     public char[][] grid() { return grid; }
 
+    public Grid flipHorizontally() {
+        return new Grid(minX, maxX, minY, maxY, GridUtils.flipHorizontally(grid));
+    }
+
+    public Grid flipVertically() {
+        return new Grid(minX, maxX, minY, maxY, GridUtils.flipVertically(grid));
+    }
+
     public Grid rotate() {
         return new Grid(minY, maxY, minX, maxX, GridUtils.rotate(grid));
     }
