@@ -55,6 +55,10 @@ public class Point {
         return directions(false).stream().map(p -> p.add(this)).collect(Collectors.toList());
     }
 
+    public int manhattanDistance() {
+        return manhattanDistance(Point.ORIGIN);
+    }
+
     public int manhattanDistance(Point other) {
         return Math.abs(x - other.x) + (Math.abs(y - other.y));
     }

@@ -78,7 +78,12 @@ public class Point3D {
         return Math.abs(x - other.x) + (Math.abs(y - other.y) + Math.abs(z - other.z));
     }
 
-    @Override
+
+    public int manhattanDistance() {
+        return manhattanDistance(Point3D.ORIGIN);
+    }
+
+        @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Point3D)) return false;
