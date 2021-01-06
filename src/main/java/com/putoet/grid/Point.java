@@ -9,6 +9,15 @@ import java.util.stream.Collectors;
 public class Point {
     public static final Point ORIGIN = Point.of(0, 0);
 
+    public static final Point NORTH = Point.of(0, 1);
+    public static final Point NORTH_EAST = Point.of(1, 1);
+    public static final Point EAST = Point.of(1, 0);
+    public static final Point SOUTH_EAST = Point.of(1, -1);
+    public static final Point SOUTH = Point.of(0, -1);
+    public static final Point SOUTH_WEST = Point.of(-1, -1);
+    public static final Point WEST = Point.of(-1, 0);
+    public static final Point NORTH_WEST = Point.of(-1, 1);
+
     public final int y, x;
 
     public static Point of(int x, int y) {
@@ -20,21 +29,16 @@ public class Point {
     public static List<Point> directions(boolean strict) {
         if (strict) {
             if (strictDirections == null)
-                strictDirections = List.of(
-                        Point.of(1, 0),
-                        Point.of(0,1),
-                        Point.of(-1,0),
-                        Point.of(0, -1)
-                );
+                strictDirections = List.of(EAST, NORTH, WEST, SOUTH);
             return strictDirections;
         }
 
         if (allDirections == null) {
             allDirections = new ArrayList<>(directions(true));
-            allDirections.add(Point.of(1, 1));
-            allDirections.add(Point.of(-1, 1));
-            allDirections.add(Point.of(1, -1));
-            allDirections.add(Point.of(-1, -1));
+            allDirections.add(NORTH_EAST);
+            allDirections.add(NORTH_WEST);
+            allDirections.add(SOUTH_EAST);
+            allDirections.add(SOUTH_WEST);
             allDirections = Collections.unmodifiableList(allDirections);
         }
         return allDirections;
