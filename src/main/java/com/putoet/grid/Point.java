@@ -63,8 +63,16 @@ public class Point {
         return manhattanDistance(Point.ORIGIN);
     }
 
+    public double euclideanDistance() {
+        return euclideanDistance(Point.ORIGIN);
+    }
+
     public int manhattanDistance(Point other) {
         return Math.abs(x - other.x) + (Math.abs(y - other.y));
+    }
+
+    public double euclideanDistance(Point other) {
+        return Math.sqrt(Math.pow(x - other.x, 2) + Math.pow(y - other.y, 2));
     }
 
     @Override

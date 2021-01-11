@@ -18,6 +18,11 @@ class PointTest {
     }
 
     @Test
+    public void distance() {
+        assertEquals(5.0, Point.of(3, 4).euclideanDistance());
+    }
+
+    @Test
     void add() {
         assertEquals(Point.of(3, 7), Point.of(1, 9).add(Point.of(2, -2)));
     }
