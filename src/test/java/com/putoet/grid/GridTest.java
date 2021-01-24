@@ -1,8 +1,10 @@
 package com.putoet.grid;
 
+import com.putoet.resources.ResourceLines;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -116,5 +118,29 @@ class GridTest {
         assertEquals(0, flipped.minY());
         assertEquals(4, flipped.maxX());
         assertEquals(3, flipped.maxY());
+    }
+
+    @Test
+    void findFirst() {
+        final List<String> lines = ResourceLines.list("/grid.txt");
+        final Grid grid = new Grid(GridUtils.of(lines));
+
+        final Optional<Point> point = grid.findFirst(c -> c == '^');
+        assertTrue(point.isPresent());
+        assertEquals(Point.of(0, 6), point.get());
+    }
+
+    @Test
+    void count() {
+        final List<String> lines = ResourceLines.list("/grid.txt");
+        final Grid grid = new Grid(GridUtils.of(lines));
+        assertEquals(76L, grid.count('#'));
+    }
+
+    @Test
+    void findAll() {
+        final List<String> lines = ResourceLines.list("/grid.txt");
+        final Grid grid = new Grid(GridUtils.of(lines));
+        assertEquals(76, grid.findAll(c -> c == '#').size());
     }
 }
