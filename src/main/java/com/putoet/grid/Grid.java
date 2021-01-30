@@ -3,10 +3,9 @@ package com.putoet.grid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalLong;
 import java.util.function.Predicate;
 
-public class Grid {
+public class Grid implements GridType {
     private final int minX;
     private final int maxX;
     private final int minY;
@@ -38,6 +37,7 @@ public class Grid {
         return new Grid(minX, maxX, minY, maxY, copy);
     }
 
+    @Override
     public void set(int x, int y, char c) {
         assert x >= minX && x < maxX;
         assert y >= minY && y < maxY;
@@ -45,6 +45,7 @@ public class Grid {
         grid[y - minY][x - minX] = c;
     }
 
+    @Override
     public char get(int x, int y) {
         assert x >= minX && x < maxX;
         assert y >= minY && y < maxY;
@@ -52,15 +53,44 @@ public class Grid {
         return grid[y - minY][x - minX];
     }
 
+    @Override
     public boolean contains(int x, int y) {
         return x >= minX && x < maxX && y >= minY && y < maxY;
     }
 
-    public int minX() { return minX; }
-    public int maxX() { return maxX; }
-    public int minY() { return minY; }
-    public int maxY() { return maxY; }
-    public char[][] grid() { return grid; }
+    @Override
+    public int minX() {
+        return minX;
+    }
+
+    @Override
+    public int maxX() {
+        return maxX;
+    }
+
+    @Override
+    public int minY() {
+        return minY;
+    }
+
+    @Override
+    public int maxY() {
+        return maxY;
+    }
+
+    @Override
+    public int width() {
+        return Math.abs(maxX - minX);
+    }
+
+    @Override
+    public int height() {
+        return Math.abs(maxY - minY);
+    }
+
+    public char[][] grid() {
+        return grid;
+    }
 
     public Grid flipHorizontally() {
         return new Grid(minX, maxX, minY, maxY, GridUtils.flipHorizontally(grid));
@@ -78,22 +108,24 @@ public class Grid {
         return GridUtils.count(grid, toCount);
     }
 
+    @Override
     public Optional<Point> findFirst(Predicate<Character> predicate) {
         for (int y = minY; y < maxY; y++)
             for (int x = minX; x < maxX; x++)
                 if (predicate.test(grid[y][x]))
-                    return Optional.of(Point.of(x,y));
+                    return Optional.of(Point.of(x, y));
 
         return Optional.empty();
     }
 
+    @Override
     public List<Point> findAll(Predicate<Character> predicate) {
         final List<Point> found = new ArrayList<>();
 
         for (int y = minY; y < maxY; y++)
             for (int x = minX; x < maxX; x++)
                 if (predicate.test(grid[y][x]))
-                    found.add(Point.of(x,y));
+                    found.add(Point.of(x, y));
 
         return found;
     }

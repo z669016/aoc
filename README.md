@@ -20,7 +20,9 @@ Contains
 
 ## Package com.putoet.grid
 Contains 
-- Grid: a basic grid class based on a two dimensional character array
-- GridUtils: utility classes for manipulating a two dimensional character array
+- GridType: the basic Grid interface
+- Grid: a basic grid class based on a two-dimensional character array
+- GridSection: a class that maps to a section of a bigger underlying grid 
+- GridUtils: utility classes for manipulating a two-dimensional character array
 - Point: a class representing a point in a grid
-- Point3D: a class representing a point in a 3 dimentional grid
+- Point3D: a class representing a point in a three-dimensional grid
