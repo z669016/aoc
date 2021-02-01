@@ -8,15 +8,20 @@ import java.util.function.Predicate;
 public class GridSection implements GridType {
     public final Point upperLeft;
     public final Point lowerRight;
-    private final Grid grid;
+    private final GridType grid;
 
-    public GridSection(Grid grid, Point upperLeft, Point lowerRight) {
+    public GridSection(GridType grid, Point upperLeft, Point lowerRight) {
         assert grid.contains(upperLeft.x, upperLeft.y);
         assert grid.contains(lowerRight.x - 1, lowerRight.y - 1);
 
         this.grid = grid;
         this.upperLeft = upperLeft;
         this.lowerRight = lowerRight;
+    }
+
+    @Override
+    public GridSection copy() {
+        return new GridSection(grid, upperLeft, lowerRight);
     }
 
     @Override

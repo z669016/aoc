@@ -135,12 +135,12 @@ public class Grid implements GridType {
         final StringBuilder sb = new StringBuilder();
         sb.append(String.format("(%d,%d)..(%d,%d)\n", minX, minY, maxX, maxY));
         sb.append(" ".repeat(3));
-        for (int i = 0; i < maxX / 10 + 1; i++) {
+        for (int i = minX; i < maxX / 10 + 1; i++) {
             sb.append(i);
             sb.append(" ".repeat(9));
         }
         sb.append("\n").append(" ".repeat(3));
-        for (int i = 0; i < maxX - 1; i++)
+        for (int i = minX; i < maxX; i++)
             sb.append(i % 10);
         sb.append("\n");
 

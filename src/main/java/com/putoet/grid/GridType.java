@@ -5,6 +5,9 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 public interface GridType {
+
+    GridType copy();
+
     void set(int x, int y, char c);
 
     char get(int x, int y);

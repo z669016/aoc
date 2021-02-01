@@ -3,13 +3,30 @@ package com.putoet.grid;
 import java.nio.CharBuffer;
 import java.util.Arrays;
 import java.util.List;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 public class GridUtils {
     public static char[][] of(List<String> lines) {
+        assert lines != null;
+
         return lines.stream()
                 .map(String::toCharArray)
                 .toArray(char[][]::new);
+    }
+
+    public static char[][] of(List<String> lines, char fill) {
+        assert lines != null;
+
+        final OptionalInt maxLen = lines.stream().mapToInt(String::length).max();
+        final char[][] grid = new char[lines.size()][maxLen.orElse(0)];
+        for (int y = 0; y < lines.size(); y++) {
+            final String line = lines.get(y);
+            Arrays.fill(grid[y], fill);
+            for (int x = 0; x < line.length(); x++)
+                grid[y][x] = line.charAt(x);
+        }
+        return grid;
     }
 
     public static char[][] of(int minX, int maxX, int minY, int maxY, char init) {
