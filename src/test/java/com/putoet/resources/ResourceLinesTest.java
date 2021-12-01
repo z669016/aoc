@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,6 +28,11 @@ class ResourceLinesTest {
     @Test
     void list() {
         assertEquals(List.of("1", "2", "3", "4", "5"), ResourceLines.list("/file.txt"));
+    }
+
+    @Test
+    void set() {
+        assertEquals(Set.of("1", "2", "3", "4", "5"), ResourceLines.set("/file.txt"));
     }
 
     @Test

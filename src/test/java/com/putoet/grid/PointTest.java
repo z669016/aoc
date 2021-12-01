@@ -2,6 +2,8 @@ package com.putoet.grid;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,9 +31,9 @@ class PointTest {
 
     @Test
     void adjacent() {
-        final List<Point> adjacend = Point.ORIGIN.adjacend();
-        assertEquals(8, adjacend.size());
-        assertTrue(adjacend.containsAll(List.of(
+        final List<Point> adjacent = Point.ORIGIN.adjacend();
+        assertEquals(8, adjacent.size());
+        assertTrue(adjacent.containsAll(List.of(
                 Point.of(1, 0),
                 Point.of(1, 1),
                 Point.of(0, 1),
@@ -41,5 +43,26 @@ class PointTest {
                 Point.of(0, -1),
                 Point.of(1, -1)
         )));
+    }
+
+    @Test
+    void compareTo() {
+        final List<Point> unsorted = new ArrayList<Point>(List.of(
+                Point.of(0,1),
+                Point.ORIGIN,
+                Point.of(-1, 1),
+                Point.of(0,-1),
+                Point.of(2, 2)
+        ));
+        final List<Point> sorted = List.of(
+                Point.of(0,-1),
+                Point.ORIGIN,
+                Point.of(-1, 1),
+                Point.of(0,1),
+                Point.of(2, 2)
+        );
+
+        Collections.sort(unsorted);
+        assertEquals(sorted, unsorted);
     }
 }

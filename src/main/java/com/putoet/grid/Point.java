@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Point {
+public class Point implements Comparable {
     public static final Point ORIGIN = Point.of(0, 0);
 
     public static final Point NORTH = Point.of(0, 1);
@@ -92,5 +92,11 @@ public class Point {
     @Override
     public String toString() {
         return "(" + x + ", " + y + ")";
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        final Point other = (Point) o;
+        return (y == other.y) ? Integer.compare(x,other.x) : Integer.compare(y, other.y);
     }
 }

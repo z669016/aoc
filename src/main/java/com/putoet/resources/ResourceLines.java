@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -35,6 +36,10 @@ public class ResourceLines {
 
     public static List<String> list(String resourceName) {
         return stream(resourceName).collect(Collectors.toList());
+    }
+
+    public static Set<String> set(String resourceName) {
+        return stream(resourceName).collect(Collectors.toSet());
     }
 
     public static String line(String resourceName) {
