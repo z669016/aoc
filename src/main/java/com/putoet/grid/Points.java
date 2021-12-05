@@ -19,12 +19,12 @@ public interface Points {
     static Point topLeft(Collection<Point> points) {
         assert points.size() > 0;
 
-        return Point.of(min(points, p -> p.x), min(points, p -> p.y));
+        return Point.of(min(points, Point::x), min(points, Point::y));
     }
 
     static Point bottomRight(Collection<Point> points) {
         assert points.size() > 0;
 
-        return Point.of(max(points, p -> p.x), max(points, p -> p.y));
+        return Point.of(max(points, Point::x), max(points, Point::y));
     }
 }

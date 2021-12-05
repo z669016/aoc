@@ -3,10 +3,9 @@ package com.putoet.grid;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Point implements Comparable {
+public record Point(int x, int y) implements Comparable<Point> {
     public static final Point ORIGIN = Point.of(0, 0);
 
     public static final Point NORTH = Point.of(0, 1);
@@ -17,15 +16,13 @@ public class Point implements Comparable {
     public static final Point SOUTH_WEST = Point.of(-1, -1);
     public static final Point WEST = Point.of(-1, 0);
     public static final Point NORTH_WEST = Point.of(-1, 1);
-
-    public final int y, x;
+    private static List<Point> strictDirections;
+    private static List<Point> allDirections;
 
     public static Point of(int x, int y) {
         return new Point(x, y);
     }
 
-    private static List<Point> strictDirections;
-    private static List<Point> allDirections;
     public static List<Point> directions(boolean strict) {
         if (strict) {
             if (strictDirections == null)
@@ -42,11 +39,6 @@ public class Point implements Comparable {
             allDirections = Collections.unmodifiableList(allDirections);
         }
         return allDirections;
-    }
-
-    private Point(int x, int y) {
-        this.x = x;
-        this.y = y;
     }
 
     public Point add(Point other) {
@@ -76,27 +68,12 @@ public class Point implements Comparable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Point)) return false;
-        Point point = (Point) o;
-        return y == point.y &&
-                x == point.x;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(y, x);
-    }
-
-    @Override
     public String toString() {
         return "(" + x + ", " + y + ")";
     }
 
     @Override
-    public int compareTo(Object o) {
-        final Point other = (Point) o;
-        return (y == other.y) ? Integer.compare(x,other.x) : Integer.compare(y, other.y);
+    public int compareTo(Point other) {
+        return (y == other.y) ? Integer.compare(x, other.x) : Integer.compare(y, other.y);
     }
 }

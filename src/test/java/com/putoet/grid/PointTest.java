@@ -47,18 +47,18 @@ class PointTest {
 
     @Test
     void compareTo() {
-        final List<Point> unsorted = new ArrayList<Point>(List.of(
-                Point.of(0,1),
+        final List<Point> unsorted = new ArrayList<>(List.of(
+                Point.of(0, 1),
                 Point.ORIGIN,
                 Point.of(-1, 1),
-                Point.of(0,-1),
+                Point.of(0, -1),
                 Point.of(2, 2)
         ));
         final List<Point> sorted = List.of(
-                Point.of(0,-1),
+                Point.of(0, -1),
                 Point.ORIGIN,
                 Point.of(-1, 1),
-                Point.of(0,1),
+                Point.of(0, 1),
                 Point.of(2, 2)
         );
 

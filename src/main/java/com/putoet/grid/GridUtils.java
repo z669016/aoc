@@ -4,6 +4,7 @@ import java.nio.CharBuffer;
 import java.util.Arrays;
 import java.util.List;
 import java.util.OptionalInt;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class GridUtils {
@@ -127,11 +128,15 @@ public class GridUtils {
         return true;
     }
 
-    public static long count(char[][] grid, char toCount) {
+    public static long count(char[][] grid, Predicate<Integer> filter) {
         return Arrays.stream(grid)
                 .flatMapToInt(row -> CharBuffer.wrap(row).chars())
-                .filter(c -> c == toCount)
+                .filter(filter::test)
                 .count();
+    }
+
+    public static long count(char[][] grid, char toCount) {
+        return count(grid, c -> c == toCount);
     }
 
     public static void print(char[][] grid) {
@@ -144,7 +149,7 @@ public class GridUtils {
     public static void print(char[][] grid, Point point, char marker) {
         for (int y = 0; y < grid.length; y++) {
             for (int x = 0; x < grid.length; x++) {
-                if (y == point.y && x == point.x)
+                if (y == point.y() && x == point.x())
                     System.out.print(marker);
                 else
                     System.out.print(grid[y][x]);

@@ -108,6 +108,10 @@ public class Grid implements GridType {
         return GridUtils.count(grid, toCount);
     }
 
+    public long count(Predicate<Integer> filter) {
+        return GridUtils.count(grid, filter);
+    }
+
     @Override
     public Optional<Point> findFirst(Predicate<Character> predicate) {
         for (int y = minY; y < maxY; y++)

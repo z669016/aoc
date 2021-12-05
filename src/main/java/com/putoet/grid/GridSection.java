@@ -5,18 +5,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public class GridSection implements GridType {
-    public final Point upperLeft;
-    public final Point lowerRight;
-    private final GridType grid;
-
-    public GridSection(GridType grid, Point upperLeft, Point lowerRight) {
-        assert grid.contains(upperLeft.x, upperLeft.y);
-        assert grid.contains(lowerRight.x - 1, lowerRight.y - 1);
-
-        this.grid = grid;
-        this.upperLeft = upperLeft;
-        this.lowerRight = lowerRight;
+public record GridSection(GridType grid, Point upperLeft, Point lowerRight) implements GridType {
+    public GridSection {
+        assert grid.contains(upperLeft.x(), upperLeft.y());
+        assert grid.contains(lowerRight.x() - 1, lowerRight.y() - 1);
     }
 
     @Override
@@ -26,22 +18,22 @@ public class GridSection implements GridType {
 
     @Override
     public int minX() {
-        return upperLeft.x;
+        return upperLeft.x();
     }
 
     @Override
     public int maxX() {
-        return lowerRight.x;
+        return lowerRight.x();
     }
 
     @Override
     public int minY() {
-        return upperLeft.y;
+        return upperLeft.y();
     }
 
     @Override
     public int maxY() {
-        return lowerRight.y;
+        return lowerRight.y();
     }
 
     @Override

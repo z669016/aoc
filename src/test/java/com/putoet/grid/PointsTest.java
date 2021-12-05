@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PointsTest {
     private static final Set<Point> POINTS = Set.of(
@@ -17,14 +17,14 @@ class PointsTest {
 
     @Test
     void min() {
-        assertEquals(-7, Points.min(POINTS, p -> p.x));
-        assertEquals(-6, Points.min(POINTS, p -> p.y));
+        assertEquals(-7, Points.min(POINTS, Point::x));
+        assertEquals(-6, Points.min(POINTS, Point::y));
     }
 
     @Test
     void max() {
-        assertEquals(8, Points.max(POINTS, p -> p.x));
-        assertEquals(5, Points.max(POINTS, p -> p.y));
+        assertEquals(8, Points.max(POINTS, Point::x));
+        assertEquals(5, Points.max(POINTS, Point::y));
     }
 
     @Test
