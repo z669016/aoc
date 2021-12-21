@@ -55,6 +55,25 @@ public record Point3D(int x, int y, int z) {
         return allDirections;
     }
 
+    static Point3D roll(Point3D point) { return Point3D.of(point.x(), point.z(), -point.y()); }
+    static Point3D turn(Point3D point) { return Point3D.of(-point.y(), point.x(), point.z()); }
+
+    // https://stackoverflow.com/questions/16452383/how-to-get-all-24-rotations-of-a-3-dimensional-array
+    public static List<Point3D> rotations(Point3D point) {
+        final List<Point3D> rotations = new ArrayList<>();
+        for (int flip = 0; flip < 2; flip++) {
+            for (int rollCount = 0; rollCount < 3; rollCount++) {
+                point = roll(point);
+                rotations.add(point);
+                for (int turnCount = 0; turnCount < 3; turnCount++) {
+                    point = turn(point);
+                    rotations.add(point);
+                }
+            }
+            point = roll(turn(roll(point)));
+        }
+        return rotations;
+    }
     public Point3D add(Point3D other) {
         assert other != null;
 
