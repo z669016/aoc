@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public record Point3D(int x, int y, int z) {
+public record Point3D(int x, int y, int z) implements Comparable<Point3D> {
     public static final Point3D ORIGIN = Point3D.of(0, 0, 0);
     private static List<Point3D> strictDirections;
     private static List<Point3D> allDirections;
@@ -74,13 +74,20 @@ public record Point3D(int x, int y, int z) {
         }
         return rotations;
     }
+
     public Point3D add(Point3D other) {
         assert other != null;
 
         return new Point3D(x + other.x, y + other.y, z + other.z);
     }
 
-    public List<Point3D> adjacend() {
+    public Point3D sub(Point3D other) {
+        assert other != null;
+
+        return new Point3D(x - other.x, y - other.y, z - other.z);
+    }
+
+    public List<Point3D> adjacent() {
         return directions(false).stream().map(p -> p.add(this)).collect(Collectors.toList());
     }
 
@@ -95,5 +102,11 @@ public record Point3D(int x, int y, int z) {
     @Override
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ")";
+    }
+
+    @Override
+    public int compareTo(Point3D other) {
+        return (z != other.z) ? Integer.compare(z, other.z) :
+                (y != other.y) ? Integer.compare(y, other.y): Integer.compare(x, other.x);
     }
 }

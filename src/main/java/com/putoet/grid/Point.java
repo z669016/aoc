@@ -47,6 +47,12 @@ public record Point(int x, int y) implements Comparable<Point> {
         return new Point(x + other.x, y + other.y);
     }
 
+    public Point sub(Point other) {
+        assert other != null;
+
+        return new Point(x - other.x, y - other.y);
+    }
+
     public List<Point> adjacend() {
         return directions(false).stream().map(p -> p.add(this)).collect(Collectors.toList());
     }

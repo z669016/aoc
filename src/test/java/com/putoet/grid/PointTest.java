@@ -30,6 +30,11 @@ class PointTest {
     }
 
     @Test
+    void sub() {
+        assertEquals(Point.of(-1, 11), Point.of(1, 9).sub(Point.of(2, -2)));
+    }
+
+    @Test
     void adjacent() {
         final List<Point> adjacent = Point.ORIGIN.adjacend();
         assertEquals(8, adjacent.size());
