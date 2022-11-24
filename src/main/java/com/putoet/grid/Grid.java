@@ -101,6 +101,7 @@ public class Grid implements GridType {
     }
 
     public Grid rotate() {
+        //noinspection SuspiciousNameCombination
         return new Grid(minY, maxY, minX, maxX, GridUtils.rotate(grid));
     }
 

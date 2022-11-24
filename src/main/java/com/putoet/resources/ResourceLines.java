@@ -35,7 +35,7 @@ public class ResourceLines {
     }
 
     public static List<String> list(String resourceName) {
-        return stream(resourceName).collect(Collectors.toList());
+        return stream(resourceName).toList();
     }
 
     public static Set<String> set(String resourceName) {
@@ -47,10 +47,10 @@ public class ResourceLines {
     }
 
     public static List<Integer> intList(String resourceName) {
-        return stream(resourceName).map(Integer::parseInt).collect(Collectors.toList());
+        return stream(resourceName).map(Integer::parseInt).toList();
     }
 
     public static List<Long> longList(String resourceName) {
-        return stream(resourceName).map(Long::parseLong).collect(Collectors.toList());
+        return stream(resourceName).map(Long::parseLong).toList();
     }
 }

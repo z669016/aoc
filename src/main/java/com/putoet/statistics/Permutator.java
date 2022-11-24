@@ -12,7 +12,7 @@ public class Permutator<T> {
 
     private void permuteHelper(List<List<T>> list, List<T> resultList, List<T> source) {
         if (resultList.size() == source.size()) {
-            list.add(new ArrayList<T>(resultList));
+            list.add(new ArrayList<>(resultList));
         } else {
             for (int i = 0; i < source.size(); i++) {
                 if (resultList.contains(source.get(i))) {

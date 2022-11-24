@@ -3,7 +3,6 @@ package com.putoet.grid;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public record Point3D(int x, int y, int z) implements Comparable<Point3D> {
     public static final Point3D ORIGIN = Point3D.of(0, 0, 0);
@@ -88,7 +87,7 @@ public record Point3D(int x, int y, int z) implements Comparable<Point3D> {
     }
 
     public List<Point3D> adjacent() {
-        return directions(false).stream().map(p -> p.add(this)).collect(Collectors.toList());
+        return directions(false).stream().map(p -> p.add(this)).toList();
     }
 
     public int manhattanDistance(Point3D other) {

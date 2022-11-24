@@ -169,6 +169,6 @@ public class GridUtils {
         return Arrays.stream(grid)
                 .sequential()
                 .map(String::valueOf)
-                .collect(Collectors.toList());
+                .toList();
     }
 }
