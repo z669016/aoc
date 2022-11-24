@@ -17,6 +17,8 @@ Contains
 ## Package com.putoet.math
 Contains
 - EuclideanAlgorithm: a class to calculate greatest-common-denominator, or Least Common Multiple
+- Factors: split a number into its factors
+- Josephus: Answer to the [Josephus problem](https://www.youtube.com/watch?v=uCsD3ZGzMgE)  
 
 ## Package com.putoet.grid
 Contains 
