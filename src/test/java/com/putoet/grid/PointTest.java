@@ -13,7 +13,8 @@ class PointTest {
 
     @Test
     void manhattanDistance() {
-        assertEquals(2, Point.ORIGIN.manhattanDistance(Point.of(1, 1)));
+        assertEquals(2, Point.of(1, 1).manhattanDistance());
+
         assertEquals(1, Point.ORIGIN.manhattanDistance(Point.of(0, 1)));
         assertEquals(8, Point.ORIGIN.manhattanDistance(Point.of(-4, -4)));
         assertEquals(6, Point.ORIGIN.manhattanDistance(Point.of(-3, 3)));
@@ -36,7 +37,7 @@ class PointTest {
 
     @Test
     void adjacent() {
-        final List<Point> adjacent = Point.ORIGIN.adjacend();
+        final List<Point> adjacent = Point.ORIGIN.adjacent();
         assertEquals(8, adjacent.size());
         assertTrue(adjacent.containsAll(List.of(
                 Point.of(1, 0),
