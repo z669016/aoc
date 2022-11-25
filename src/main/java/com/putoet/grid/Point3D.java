@@ -3,6 +3,7 @@ package com.putoet.grid;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 
 public record Point3D(int x, int y, int z) implements Comparable<Point3D> {
     public static final Point3D ORIGIN = Point3D.of(0, 0, 0);
@@ -80,6 +81,12 @@ public record Point3D(int x, int y, int z) implements Comparable<Point3D> {
         return new Point3D(x + other.x, y + other.y, z + other.z);
     }
 
+    public Point3D transform(Function<Integer,Integer> transformer) {
+        assert transformer != null;
+
+        return new Point3D(transformer.apply(x), transformer.apply(y), transformer.apply(z));
+    }
+
     public Point3D sub(Point3D other) {
         assert other != null;
 
@@ -96,6 +103,14 @@ public record Point3D(int x, int y, int z) implements Comparable<Point3D> {
 
     public int manhattanDistance() {
         return manhattanDistance(Point3D.ORIGIN);
+    }
+
+    public double euclideanDistance() {
+        return euclideanDistance(Point3D.ORIGIN);
+    }
+
+    public double euclideanDistance(Point3D other) {
+        return Math.sqrt(Math.pow(x - other.x, 2) + Math.pow(y - other.y, 2) + Math.pow(z - other.z, 2));
     }
 
     @Override

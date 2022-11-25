@@ -21,6 +21,11 @@ class PointTest {
     }
 
     @Test
+    void euclianDistance() {
+        assertEquals(5.0, Point.of(3, 4).euclideanDistance());
+    }
+
+    @Test
     public void distance() {
         assertEquals(5.0, Point.of(3, 4).euclideanDistance());
     }
@@ -33,6 +38,11 @@ class PointTest {
     @Test
     void sub() {
         assertEquals(Point.of(-1, 11), Point.of(1, 9).sub(Point.of(2, -2)));
+    }
+
+    @Test
+    void transform() {
+        assertEquals(Point.of(9, 6), Point.of(3, 2).transform(x -> x * 3));
     }
 
     @Test

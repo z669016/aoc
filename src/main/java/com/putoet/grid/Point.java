@@ -3,6 +3,7 @@ package com.putoet.grid;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public record Point(int x, int y) implements Comparable<Point> {
@@ -53,6 +54,13 @@ public record Point(int x, int y) implements Comparable<Point> {
         return new Point(x - other.x, y - other.y);
     }
 
+    public Point transform(Function<Integer,Integer> transformer) {
+        assert transformer != null;
+
+        return new Point(transformer.apply(x), transformer.apply(y));
+    }
+
+
     public List<Point> adjacent() {
         return directions(false).stream().map(p -> p.add(this)).collect(Collectors.toList());
     }
@@ -61,12 +69,12 @@ public record Point(int x, int y) implements Comparable<Point> {
         return manhattanDistance(Point.ORIGIN);
     }
 
-    public double euclideanDistance() {
-        return euclideanDistance(Point.ORIGIN);
-    }
-
     public int manhattanDistance(Point other) {
         return Math.abs(x - other.x) + (Math.abs(y - other.y));
+    }
+
+    public double euclideanDistance() {
+        return euclideanDistance(Point.ORIGIN);
     }
 
     public double euclideanDistance(Point other) {
