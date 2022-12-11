@@ -6,7 +6,7 @@
 
   <groupId>com.putoet</groupId>
   <artifactId>aoc</artifactId>
-  <version>1.4.21</version>
+  <version>1.4.22</version>
 
   <name>aoc</name>
   <description>Reusable components for aoc puzzles</description>

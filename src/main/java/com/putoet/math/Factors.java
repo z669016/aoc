@@ -21,4 +21,28 @@ public class Factors {
         Collections.sort(factors);
         return factors;
     }
+
+    public static long gcd(final long first, final long second) {
+        if (first == 0 || second == 0) {
+            return first + second;
+        } else {
+            return gcd(Math.max(first, second) % Math.min(first, second), Math.min(first, second));
+        }
+    }
+
+    public static int gcd(final int first, final int second) {
+        if (first == 0 || second == 0) {
+            return first + second;
+        } else {
+            return gcd(Math.max(first, second) % Math.min(first, second), Math.min(first, second));
+        }
+    }
+
+    public static int lcm(final int first, final int second) {
+        return first * second / gcd(first, second);
+    }
+
+    public static long lcm(final long first, final long second) {
+        return first * second / gcd(first, second);
+    }
 }
