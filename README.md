@@ -3,7 +3,7 @@ A small library with supporting classes for solving Advent of Code puzzles
 
 ## Package com.putoet.resources
 Contains
-- ResourceLines: to read a resource file into a ```List<String>``` or ```List<Integer>```
+- ResourceLines: to read a resource file into a ```List<String>``` or ```List<T>```
 - CSV: to read a comma separated resource file into a ```List<List<String>>``` or a flat ```List<String>```, optionally applying a transformation mapper to convert the strings into ... integers perhaps?
 
 ## Package com.putoet.security
@@ -12,7 +12,8 @@ Contains
 
 ## Package com.putoet.statistics
 Contains
-- Permutator: A generic class with methods to create permutations of combinations of ```List``` of elements
+- Permutator (deprecated): A generic class with methods to create permutations of combinations of ```List``` of elements
+- use the combinatorics3 for combinations and permutations!
 
 ## Package com.putoet.math
 Contains

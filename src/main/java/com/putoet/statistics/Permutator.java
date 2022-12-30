@@ -3,6 +3,7 @@ package com.putoet.statistics;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class Permutator<T> {
     public List<List<T>> permute(List<T> source) {
         final List<List<T>> list = new ArrayList<>();

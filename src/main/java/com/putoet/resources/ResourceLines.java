@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -46,11 +47,7 @@ public class ResourceLines {
         return stream(resourceName).collect(Collectors.joining());
     }
 
-    public static List<Integer> intList(String resourceName) {
-        return stream(resourceName).map(Integer::parseInt).toList();
-    }
-
-    public static List<Long> longList(String resourceName) {
-        return stream(resourceName).map(Long::parseLong).toList();
+    public static <T> List<T> list(String resourceName, Function<String,T> of) {
+        return stream(resourceName).map(of).toList();
     }
 }

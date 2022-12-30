@@ -36,12 +36,12 @@ class ResourceLinesTest {
     }
 
     @Test
-    void intList() {
-        assertEquals(List.of(1, 2, 3, 4, 5), ResourceLines.intList("/file.txt"));
+    void line() {
+        assertEquals("12345", ResourceLines.line("/file.txt"));
     }
 
     @Test
-    void line() {
-        assertEquals("12345", ResourceLines.line("/file.txt"));
+    void genericList() {
+        assertEquals(List.of(1, 2, 3, 4, 5), ResourceLines.list("/file.txt", Integer::parseInt));
     }
 }
