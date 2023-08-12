@@ -28,6 +28,9 @@ public class ResourceLines {
     public static Stream<String> stream(String resourceName) {
         try {
             final URL url = ResourceLines.class.getResource(resourceName);
+            if (url == null)
+                throw new IllegalArgumentException("Invalid resource name '" + resourceName + "'");
+
             final Path path = Paths.get(url.toURI());
             return Files.lines(path);
         } catch (URISyntaxException | IOException exc) {

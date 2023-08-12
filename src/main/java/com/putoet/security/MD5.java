@@ -4,17 +4,21 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MD5 {
-    public static String hash(String text) throws NoSuchAlgorithmException {
-        final MessageDigest md = MessageDigest.getInstance("MD5");
-        md.update(text.getBytes());
-        byte[] digest = md.digest();
-        return bytesToHex(digest);
+    public static String hash(String text)  {
+        try {
+            final MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(text.getBytes());
+            final byte[] digest = md.digest();
+            return bytesToHex(digest);
+        } catch (NoSuchAlgorithmException exc) {
+            throw new IllegalArgumentException(exc.getMessage(), exc);
+        }
     }
 
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
 
     public static String bytesToHex(byte[] bytes) {
-        char[] hexChars = new char[bytes.length * 2];
+        final char[] hexChars = new char[bytes.length * 2];
         for (int j = 0; j < bytes.length; j++) {
             int v = bytes[j] & 0xFF;
             hexChars[j * 2] = HEX_ARRAY[v >>> 4];

@@ -30,11 +30,7 @@ public class Grid implements GridType {
     }
 
     public Grid copy() {
-        final char[][] copy = new char[maxY - minY][maxX - minX];
-        for (int y = 0; y < grid.length; y++)
-            System.arraycopy(grid[y], 0, copy[y], 0, grid[y].length);
-
-        return new Grid(minX, maxX, minY, maxY, copy);
+        return new Grid(minX, maxX, minY, maxY, GridUtils.copy(grid));
     }
 
     @Override
