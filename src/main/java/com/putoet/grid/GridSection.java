@@ -89,7 +89,7 @@ public record GridSection(GridType grid, Point upperLeft, Point lowerRight) impl
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final var sb = new StringBuilder();
         sb.append(String.format("(%d,%d)..(%d,%d)\n", minX(), minY(), maxX(), maxY()));
         sb.append(" ".repeat(3));
         for (int i = 0; i < width() / 10 + 1; i++) {

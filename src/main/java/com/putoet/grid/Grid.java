@@ -19,7 +19,7 @@ public class Grid implements GridType {
     public Grid(int minX, int maxX, int minY, int maxY, char[][] grid) {
         assert grid != null;
         assert grid.length == maxY - minY;
-        for (char[] row : grid)
+        for (var row : grid)
             assert row.length == maxX - minX;
 
         this.minX = minX;
@@ -121,7 +121,7 @@ public class Grid implements GridType {
 
     @Override
     public List<Point> findAll(Predicate<Character> predicate) {
-        final List<Point> found = new ArrayList<>();
+        final var found = new ArrayList<Point>();
 
         for (int y = minY; y < maxY; y++)
             for (int x = minX; x < maxX; x++)
@@ -133,7 +133,7 @@ public class Grid implements GridType {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
+        final var sb = new StringBuilder();
         sb.append(String.format("(%d,%d)..(%d,%d)\n", minX, minY, maxX, maxY));
         sb.append(" ".repeat(3));
         for (int i = minX; i < maxX / 10 + 1; i++) {

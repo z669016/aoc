@@ -60,7 +60,7 @@ public record Point3D(int x, int y, int z) implements Comparable<Point3D> {
 
     // https://stackoverflow.com/questions/16452383/how-to-get-all-24-rotations-of-a-3-dimensional-array
     public static List<Point3D> rotations(Point3D point) {
-        final List<Point3D> rotations = new ArrayList<>();
+        final var rotations = new ArrayList<Point3D>();
         for (int flip = 0; flip < 2; flip++) {
             for (int rollCount = 0; rollCount < 3; rollCount++) {
                 point = roll(point);

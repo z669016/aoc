@@ -3,7 +3,6 @@ package com.putoet.grid;
 import java.nio.CharBuffer;
 import java.util.Arrays;
 import java.util.List;
-import java.util.OptionalInt;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -19,10 +18,10 @@ public class GridUtils {
     public static char[][] of(List<String> lines, char fill) {
         assert lines != null;
 
-        final OptionalInt maxLen = lines.stream().mapToInt(String::length).max();
-        final char[][] grid = new char[lines.size()][maxLen.orElse(0)];
+        final var maxLen = lines.stream().mapToInt(String::length).max();
+        final var grid = new char[lines.size()][maxLen.orElse(0)];
         for (int y = 0; y < lines.size(); y++) {
-            final String line = lines.get(y);
+            final var line = lines.get(y);
             Arrays.fill(grid[y], fill);
             for (int x = 0; x < line.length(); x++)
                 grid[y][x] = line.charAt(x);
@@ -33,15 +32,15 @@ public class GridUtils {
     public static char[][] of(int minX, int maxX, int minY, int maxY, char init) {
         assert maxX > minX && maxY > minY;
 
-        final char[][] grid = new char[maxY - minY][maxX - minX];
-        for (char[] row : grid)
+        final var grid = new char[maxY - minY][maxX - minX];
+        for (var row : grid)
             Arrays.fill(row, init);
 
         return grid;
     }
 
     public static char[][] copy(char[][] grid) {
-        final char[][] copy = new char[grid.length][grid[0].length];
+        final var copy = new char[grid.length][grid[0].length];
         for (int y = 0; y < grid.length; y++) {
             System.arraycopy(grid[y], 0, copy[y], 0, grid[y].length);
         }
@@ -51,7 +50,7 @@ public class GridUtils {
 
     public static char[][] grow(char[][] grid, char init) {
         final int largerSize = grid.length * 3;
-        final char[][] largerGrid = new char[largerSize][largerSize];
+        final var largerGrid = new char[largerSize][largerSize];
 
         for (int blockY = 0; blockY < 3; blockY++)
             for (int blockX = 0; blockX < 3; blockX++) {
@@ -76,7 +75,7 @@ public class GridUtils {
         final int sizeY = grid.length;
         final int sizeX = grid[0].length;
 
-        final char[][] rotated = new char[sizeX][sizeY];
+        final var rotated = new char[sizeX][sizeY];
         for (int y = 0; y < sizeY; y++) {
             for (int x = 0;x < sizeX; x++) {
                 rotated[x][sizeY - y - 1] = grid[y][x];
@@ -90,7 +89,7 @@ public class GridUtils {
         final int sizeY = grid.length;
         final int sizeX = grid[0].length;
 
-        final char[][] flipped = new char[sizeY][sizeX];
+        final var flipped = new char[sizeY][sizeX];
         for (int y = 0; y < sizeY; y++) {
             System.arraycopy(grid[y], 0, flipped[sizeY - y - 1], 0, sizeX);
         }
@@ -102,7 +101,7 @@ public class GridUtils {
         final int sizeY = grid.length;
         final int sizeX = grid[0].length;
 
-        final char[][] flipped = new char[sizeY][sizeX];
+        final var flipped = new char[sizeY][sizeX];
         for (int y = 0; y < sizeY; y++) {
             for (int x = 0;x < sizeX; x++) {
                 flipped[y][sizeX - x - 1] = grid[y][x];
