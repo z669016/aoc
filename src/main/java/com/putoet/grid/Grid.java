@@ -1,8 +1,6 @@
 package com.putoet.grid;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Predicate;
 
 public class Grid implements GridType {
@@ -129,6 +127,13 @@ public class Grid implements GridType {
                     found.add(Point.of(x, y));
 
         return found;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(minX, maxX, minY, maxY);
+        result = 31 * result + Arrays.deepHashCode(grid);
+        return result;
     }
 
     @Override
