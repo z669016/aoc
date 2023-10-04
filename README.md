@@ -10,14 +10,8 @@ Contains
 Contains
 - MD5: a simple class with a method to generate a standard MD5 hash
 
-## Package com.putoet.statistics
-Contains
-- Permutator (deprecated): A generic class with methods to create permutations of combinations of ```List``` of elements
-- use the combinatorics3 for combinations and permutations!
-
 ## Package com.putoet.math
 Contains
-- EuclideanAlgorithm: a class to calculate greatest-common-denominator, or Least Common Multiple
 - Factors: split a number into its factors, gcd (Greatest Common Denominator), lcm (Lowest Common Multiple)
 - Josephus: Answer to the [Josephus problem](https://www.youtube.com/watch?v=uCsD3ZGzMgE)  
 
@@ -30,3 +24,5 @@ Contains
 - Point: a class representing a point in a grid
 - Point3D: a class representing a point in a three-dimensional grid
 - Size: a class representing the size of a rectangle
+- GridIterator: an interface to walk a grid
+- SquareIterator: an implementation of GridIterator to walk a grid in a square pattern

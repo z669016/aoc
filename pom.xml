@@ -16,7 +16,6 @@
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
 
-
     <junit-jupiter-engine.version>5.10.0</junit-jupiter-engine.version>
     <mockito-core.version>5.4.0</mockito-core.version>
   </properties>
@@ -34,5 +33,11 @@
       <version>${mockito-core.version}</version>
       <scope>test</scope>
     </dependency>
+      <dependency>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter-params</artifactId>
+        <version>${junit-jupiter-engine.version}</version>
+          <scope>test</scope>
+      </dependency>
   </dependencies>
 </project>
