@@ -84,7 +84,7 @@ class SquareIteratorTest {
     void hasNext3() {
         assertTrue(ITER3.hasNext());
         final var next = ITER3.next();
-        assertEquals(Point.of(2,2), next);
+        assertEquals(Point.of(2, 2), next);
         assertEquals(13, SQUARE[next.y()][next.x()]);
         assertFalse(ITER3.hasNext());
 
