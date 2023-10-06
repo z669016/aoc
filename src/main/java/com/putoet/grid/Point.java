@@ -60,9 +60,12 @@ public record Point(int x, int y) implements Comparable<Point> {
         return new Point(transformer.apply(x), transformer.apply(y));
     }
 
-
     public List<Point> adjacent() {
-        return directions(false).stream().map(p -> p.add(this)).collect(Collectors.toList());
+        return adjacent(directions(false));
+    }
+
+    public List<Point> adjacent(List<Point> directions) {
+        return directions.stream().map(p -> p.add(this)).collect(Collectors.toList());
     }
 
     public int manhattanDistance() {
