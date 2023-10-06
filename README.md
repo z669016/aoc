@@ -26,3 +26,4 @@ Contains
 - Size: a class representing the size of a rectangle
 - GridIterator: an interface to walk a grid
 - SquareIterator: an implementation of GridIterator to walk a grid in a square pattern
+- SpiralIterator: an implementation of GridIterator to walk a grid in a spiral pattern
