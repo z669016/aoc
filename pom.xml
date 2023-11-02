@@ -6,21 +6,28 @@
 
   <groupId>com.putoet</groupId>
   <artifactId>aoc</artifactId>
-  <version>1.5.5</version>
+  <version>1.6.0</version>
 
   <name>aoc</name>
   <description>Reusable components for aoc puzzles</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
 
     <junit-jupiter-engine.version>5.10.0</junit-jupiter-engine.version>
     <mockito-core.version>5.4.0</mockito-core.version>
+    <jcolor.version>5.5.1</jcolor.version>
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>com.diogonunes</groupId>
+      <artifactId>JColor</artifactId>
+      <version>${jcolor.version}</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>

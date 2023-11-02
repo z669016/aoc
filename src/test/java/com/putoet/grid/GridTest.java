@@ -4,7 +4,6 @@ import com.putoet.resources.ResourceLines;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,7 +11,7 @@ class GridTest {
 
     @Test
     void contains() {
-        final Grid grid = new Grid(-7, 9, -13, 17,
+        final var grid = new Grid(-7, 9, -13, 17,
                 GridUtils.of(-7, 9, -13, 17, '.'));
 
         assertTrue(grid.contains(-7, -13));
@@ -38,13 +37,13 @@ class GridTest {
 
     @Test
     void rotate() {
-        final Grid grid = new Grid(GridUtils.of(List.of(
+        final var grid = new Grid(GridUtils.of(List.of(
                 "1234",
                 "5678",
                 "90ab"
         )));
 
-        final char[][] expected = GridUtils.of(List.of(
+        final var expected = GridUtils.of(List.of(
                 "951",
                 "062",
                 "a73",
@@ -56,7 +55,7 @@ class GridTest {
         assertEquals(4, grid.maxX());
         assertEquals(3, grid.maxY());
 
-        final Grid rotated = grid.rotate();
+        final var rotated = grid.rotate();
         assertTrue(GridUtils.gridEquals(expected, rotated.grid()));
         assertEquals(0, rotated.minX());
         assertEquals(0, rotated.minY());
@@ -66,13 +65,13 @@ class GridTest {
 
     @Test
     void flipHorizontally() {
-        final Grid grid = new Grid(GridUtils.of(List.of(
+        final var grid = new Grid(GridUtils.of(List.of(
                 "1234",
                 "5678",
                 "90ab"
         )));
 
-        final char[][] expected = GridUtils.of(List.of(
+        final var expected = GridUtils.of(List.of(
                 "90ab",
                 "5678",
                 "1234"
@@ -83,7 +82,7 @@ class GridTest {
         assertEquals(4, grid.maxX());
         assertEquals(3, grid.maxY());
 
-        final Grid flipped = grid.flipHorizontally();
+        final var flipped = grid.flipHorizontally();
 
         assertTrue(GridUtils.gridEquals(expected, flipped.grid()));
         assertEquals(0, flipped.minX());
@@ -94,13 +93,13 @@ class GridTest {
 
     @Test
     void flipVertically() {
-        final Grid grid = new Grid(GridUtils.of(List.of(
+        final var grid = new Grid(GridUtils.of(List.of(
                 "1234",
                 "5678",
                 "90ab"
         )));
 
-        final char[][] expected = GridUtils.of(List.of(
+        final var expected = GridUtils.of(List.of(
                 "4321",
                 "8765",
                 "ba09"
@@ -111,7 +110,7 @@ class GridTest {
         assertEquals(4, grid.maxX());
         assertEquals(3, grid.maxY());
 
-        final Grid flipped = grid.flipVertically();
+        final var flipped = grid.flipVertically();
 
         assertTrue(GridUtils.gridEquals(expected, flipped.grid()));
         assertEquals(0, flipped.minX());
@@ -122,19 +121,20 @@ class GridTest {
 
     @Test
     void findFirst() {
-        final List<String> lines = ResourceLines.list("/grid.txt");
-        final Grid grid = new Grid(GridUtils.of(lines));
+        final var lines = ResourceLines.list("/grid.txt");
+        final var grid = new Grid(GridUtils.of(lines));
 
-        final Optional<Point> point = grid.findFirst(c -> c == '^');
+        final var point = grid.findFirst(c -> c == '^');
         assertTrue(point.isPresent());
         assertEquals(Point.of(0, 6), point.get());
     }
 
     @Test
     void count() {
-        final List<String> lines = ResourceLines.list("/grid.txt");
-        final Grid grid = new Grid(GridUtils.of(lines));
+        final var lines = ResourceLines.list("/grid.txt");
+        final var grid = new Grid(GridUtils.of(lines));
         assertEquals(76L, grid.count('#'));
+        assertEquals(76L, grid.count(c -> c == '#'));
     }
 
     @Test

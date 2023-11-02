@@ -109,8 +109,8 @@ public class Grid implements GridType {
 
     @Override
     public Optional<Point> findFirst(Predicate<Character> predicate) {
-        for (int y = minY; y < maxY; y++)
-            for (int x = minX; x < maxX; x++)
+        for (var y = minY; y < maxY; y++)
+            for (var x = minX; x < maxX; x++)
                 if (predicate.test(grid[y][x]))
                     return Optional.of(Point.of(x, y));
 
@@ -121,8 +121,8 @@ public class Grid implements GridType {
     public List<Point> findAll(Predicate<Character> predicate) {
         final var found = new ArrayList<Point>();
 
-        for (int y = minY; y < maxY; y++)
-            for (int x = minX; x < maxX; x++)
+        for (var y = minY; y < maxY; y++)
+            for (var x = minX; x < maxX; x++)
                 if (predicate.test(grid[y][x]))
                     found.add(Point.of(x, y));
 
@@ -131,7 +131,7 @@ public class Grid implements GridType {
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(minX, maxX, minY, maxY);
+        var result = Objects.hash(minX, maxX, minY, maxY);
         result = 31 * result + Arrays.deepHashCode(grid);
         return result;
     }
@@ -141,17 +141,18 @@ public class Grid implements GridType {
         final var sb = new StringBuilder();
         sb.append(String.format("(%d,%d)..(%d,%d)\n", minX, minY, maxX, maxY));
         sb.append(" ".repeat(3));
-        for (int i = minX; i < maxX / 10 + 1; i++) {
+        for (var i = minX; i < maxX / 10 + 1; i++) {
             sb.append(i);
             sb.append(" ".repeat(9));
         }
+
         sb.append("\n").append(" ".repeat(3));
-        for (int i = minX; i < maxX; i++)
+        for (var i = minX; i < maxX; i++)
             sb.append(i % 10);
         sb.append("\n");
 
-        final List<String> list = GridUtils.toList(grid);
-        for (int i = 0; i < list.size(); i++)
+        final var list = GridUtils.toList(grid);
+        for (var i = 0; i < list.size(); i++)
             sb.append(String.format("%02d ", i % 100)).append(list.get(i)).append("\n");
 
         return sb.toString();

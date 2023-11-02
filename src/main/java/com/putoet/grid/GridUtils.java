@@ -20,10 +20,10 @@ public class GridUtils {
 
         final var maxLen = lines.stream().mapToInt(String::length).max();
         final var grid = new char[lines.size()][maxLen.orElse(0)];
-        for (int y = 0; y < lines.size(); y++) {
+        for (var y = 0; y < lines.size(); y++) {
             final var line = lines.get(y);
             Arrays.fill(grid[y], fill);
-            for (int x = 0; x < line.length(); x++)
+            for (var x = 0; x < line.length(); x++)
                 grid[y][x] = line.charAt(x);
         }
         return grid;
@@ -72,11 +72,11 @@ public class GridUtils {
     }
 
     public static char[][] rotate(char[][] grid) {
-        final int sizeY = grid.length;
-        final int sizeX = grid[0].length;
+        final var sizeY = grid.length;
+        final var sizeX = grid[0].length;
 
         final var rotated = new char[sizeX][sizeY];
-        for (int y = 0; y < sizeY; y++) {
+        for (var y = 0; y < sizeY; y++) {
             for (int x = 0;x < sizeX; x++) {
                 rotated[x][sizeY - y - 1] = grid[y][x];
             }
@@ -86,11 +86,11 @@ public class GridUtils {
     }
 
     public static char[][] flipHorizontally(char[][] grid) {
-        final int sizeY = grid.length;
-        final int sizeX = grid[0].length;
+        final var sizeY = grid.length;
+        final var sizeX = grid[0].length;
 
         final var flipped = new char[sizeY][sizeX];
-        for (int y = 0; y < sizeY; y++) {
+        for (var y = 0; y < sizeY; y++) {
             System.arraycopy(grid[y], 0, flipped[sizeY - y - 1], 0, sizeX);
         }
 
@@ -98,11 +98,11 @@ public class GridUtils {
     }
 
     public static char[][] flipVertically(char[][] grid) {
-        final int sizeY = grid.length;
-        final int sizeX = grid[0].length;
+        final var sizeY = grid.length;
+        final var sizeX = grid[0].length;
 
         final var flipped = new char[sizeY][sizeX];
-        for (int y = 0; y < sizeY; y++) {
+        for (var y = 0; y < sizeY; y++) {
             for (int x = 0;x < sizeX; x++) {
                 flipped[y][sizeX - x - 1] = grid[y][x];
             }
@@ -115,11 +115,11 @@ public class GridUtils {
         if (a.length != b.length)
             return false;
 
-        for (int y = 0; y < a.length; y++) {
+        for (var y = 0; y < a.length; y++) {
             if (a[y].length != b[y].length)
                 return false;
 
-            for (int x = 0; x < a[y].length; x++)
+            for (var x = 0; x < a[y].length; x++)
                 if (a[y][x] != b[y][x])
                     return false;
         }
@@ -146,8 +146,8 @@ public class GridUtils {
     }
 
     public static void print(char[][] grid, Point point, char marker) {
-        for (int y = 0; y < grid.length; y++) {
-            for (int x = 0; x < grid.length; x++) {
+        for (var y = 0; y < grid.length; y++) {
+            for (var x = 0; x < grid.length; x++) {
                 if (y == point.y() && x == point.x())
                     System.out.print(marker);
                 else

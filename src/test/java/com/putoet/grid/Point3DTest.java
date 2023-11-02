@@ -42,18 +42,19 @@ class Point3DTest {
 
     @Test
     void adjacent() {
-        final List<Point3D> adjacent = Point3D.ORIGIN.adjacent();
-        assertEquals(26, adjacent.size());
+        var adjacent = Point3D.ORIGIN.adjacent();
+        assertEquals(6, adjacent.size());
         assertTrue(adjacent.containsAll(List.of(
                 Point3D.of(1, 0, 0),
-                Point3D.of(1, 1, 0),
                 Point3D.of(0, 1, 0),
-                Point3D.of(-1, 1, 0),
+                Point3D.of(0, 0, 1),
                 Point3D.of(-1, 0, 0),
-                Point3D.of(-1, -1, 0),
                 Point3D.of(0, -1, 0),
-                Point3D.of(1, -1, 0)
+                Point3D.of(0, 0, -1)
         )));
+
+        adjacent = Point3D.ORIGIN.adjacent(Points3D.directionsAll());
+        assertEquals(26, adjacent.size());
     }
 
     @Test

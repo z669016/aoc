@@ -1,7 +1,5 @@
 package com.putoet.grid;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -17,29 +15,9 @@ public record Point(int x, int y) implements Comparable<Point> {
     public static final Point SOUTH_WEST = Point.of(-1, -1);
     public static final Point WEST = Point.of(-1, 0);
     public static final Point NORTH_WEST = Point.of(-1, 1);
-    private static List<Point> strictDirections;
-    private static List<Point> allDirections;
 
     public static Point of(int x, int y) {
         return new Point(x, y);
-    }
-
-    public static List<Point> directions(boolean strict) {
-        if (strict) {
-            if (strictDirections == null)
-                strictDirections = List.of(EAST, NORTH, WEST, SOUTH);
-            return strictDirections;
-        }
-
-        if (allDirections == null) {
-            allDirections = new ArrayList<>(directions(true));
-            allDirections.add(NORTH_EAST);
-            allDirections.add(NORTH_WEST);
-            allDirections.add(SOUTH_EAST);
-            allDirections.add(SOUTH_WEST);
-            allDirections = Collections.unmodifiableList(allDirections);
-        }
-        return allDirections;
     }
 
     public Point add(Point other) {
@@ -61,7 +39,7 @@ public record Point(int x, int y) implements Comparable<Point> {
     }
 
     public List<Point> adjacent() {
-        return adjacent(directions(false));
+        return adjacent(Points.directionsSquare());
     }
 
     public List<Point> adjacent(List<Point> directions) {

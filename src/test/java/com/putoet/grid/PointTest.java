@@ -47,7 +47,16 @@ class PointTest {
 
     @Test
     void adjacent() {
-        final List<Point> adjacent = Point.ORIGIN.adjacent();
+        var adjacent = Point.ORIGIN.adjacent();
+        assertEquals(4, adjacent.size());
+        assertTrue(adjacent.containsAll(List.of(
+                Point.of(1, 0),
+                Point.of(0, 1),
+                Point.of(-1, 0),
+                Point.of(0, -1)
+        )));
+
+        adjacent = Point.ORIGIN.adjacent(Points.directionsAll());
         assertEquals(8, adjacent.size());
         assertTrue(adjacent.containsAll(List.of(
                 Point.of(1, 0),
@@ -63,14 +72,14 @@ class PointTest {
 
     @Test
     void compareTo() {
-        final List<Point> unsorted = new ArrayList<>(List.of(
+        final var unsorted = new ArrayList<>(List.of(
                 Point.of(0, 1),
                 Point.ORIGIN,
                 Point.of(-1, 1),
                 Point.of(0, -1),
                 Point.of(2, 2)
         ));
-        final List<Point> sorted = List.of(
+        final var sorted = List.of(
                 Point.of(0, -1),
                 Point.ORIGIN,
                 Point.of(-1, 1),

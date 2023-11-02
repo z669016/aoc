@@ -21,23 +21,23 @@ class GridUtilsTest {
 
     @Test
     void copy() {
-        final char[][] copy = GridUtils.copy(NUMBERS);
-        assertFalse(NUMBERS == copy);
+        final var copy = GridUtils.copy(NUMBERS);
+        assertNotSame(NUMBERS, copy);
         assertTrue(GridUtils.gridEquals(copy, NUMBERS));
     }
 
     @Test
     void of() {
-        final String s = GridUtils.toString(NUMBERS);
+        final var s = GridUtils.toString(NUMBERS);
         assertEquals("123456789", s);
     }
 
     @Test
     void grow() {
-        char[][] grid = GridUtils.grow(NUMBERS, '.');
+        var grid = GridUtils.grow(NUMBERS, '.');
 
-        final List<String> list = GridUtils.toList(grid);
-        final List<String> expected = List.of(
+        final var list = GridUtils.toList(grid);
+        final var expected = List.of(
                 ".........",
                 ".........",
                 ".........",
@@ -53,7 +53,7 @@ class GridUtilsTest {
 
     @Test
     void rotate() {
-        final char[][] rotated = GridUtils.rotate(NUMBERS);
+        final var rotated = GridUtils.rotate(NUMBERS);
         GridUtils.print(rotated);
 
         assertTrue(GridUtils.gridEquals(rotated, ROTATED));
@@ -61,7 +61,7 @@ class GridUtilsTest {
 
     @Test
     void flipHorizontally() {
-        final char[][] flipped = GridUtils.of(List.of(
+        final var flipped = GridUtils.of(List.of(
                 "789",
                 "456",
                 "123"
@@ -71,7 +71,7 @@ class GridUtilsTest {
 
     @Test
     void flipVertically() {
-        final char[][] flipped = GridUtils.of(List.of(
+        final var flipped = GridUtils.of(List.of(
                 "321",
                 "654",
                 "987"
