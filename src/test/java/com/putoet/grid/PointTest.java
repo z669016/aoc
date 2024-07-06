@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class PointTest {
 
@@ -21,7 +20,7 @@ class PointTest {
     }
 
     @Test
-    void euclianDistance() {
+    void euclideanDistance() {
         assertEquals(5.0, Point.of(3, 4).euclideanDistance());
     }
 
@@ -33,6 +32,7 @@ class PointTest {
     @Test
     void add() {
         assertEquals(Point.of(3, 7), Point.of(1, 9).add(Point.of(2, -2)));
+        assertThrows(NullPointerException.class, () -> Point.of(1, 1).add(null));
     }
 
     @Test
@@ -89,5 +89,7 @@ class PointTest {
 
         Collections.sort(unsorted);
         assertEquals(sorted, unsorted);
+
+        assertThrows(NullPointerException.class, () -> Point.ORIGIN.compareTo(null));
     }
 }

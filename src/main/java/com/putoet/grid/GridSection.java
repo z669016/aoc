@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+/**
+ * A GridSection represents a rectangular section of a larger GridType. It basically wraps the original grid without
+ * copying the content. Only the {@link #copy()} method creates a new GridSection with a copy of the original grid,
+ * to prevent the original to be modified after copying.
+ */
 public record GridSection(GridType grid, Point upperLeft, Point lowerRight) implements GridType {
     public GridSection {
         assert grid.contains(upperLeft.x(), upperLeft.y());
@@ -14,7 +19,7 @@ public record GridSection(GridType grid, Point upperLeft, Point lowerRight) impl
 
     @Override
     public GridSection copy() {
-        return new GridSection(grid, upperLeft, lowerRight);
+        return new GridSection(grid.copy(), upperLeft, lowerRight);
     }
 
     @Override

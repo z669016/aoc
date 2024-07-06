@@ -1,16 +1,38 @@
 package com.putoet.grid;
 
+import java.util.Objects;
+
+/**
+ * An iterator over a grid of points following a square. It starts at the origin, assuming that's the top-left of the
+ * grid, and traverses around the outer-square of the grid. Unlike the {@link com.putoet.grid.SpiralIterator}, this
+ * iterator does not spiral towards the center. This means it will not return all points in the grid, only the ones on
+ * the outer-square.
+ */
 public class SquareIterator implements GritIterator {
     private final Size size;
     private final Point start;
     private Point current;
 
+    /**
+     * Create a new SquareIterator for the given size.
+     * @param size The size of the grid to iterate over, must not be null.
+     */
     public SquareIterator(Size size) {
+        Objects.requireNonNull(size);
+
         this.size = size;
         this.start = Point.of(0, 0);
     }
 
+    /**
+     * Create a new SquareIterator for the given size starting at the given point.
+     * @param start The starting point of the square, must not be null.
+     * @param size The size of the grid to iterate over, must not be null.
+     */
     public SquareIterator(Point start, Size size) {
+        Objects.requireNonNull(start);
+        Objects.requireNonNull(size);
+
         this.size = size;
         this.start = start;
     }

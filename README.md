@@ -1,6 +1,10 @@
 # aoc
 A small library with supporting classes for solving Advent of Code puzzles
 
+Version 1.7.0
+JavaDoc was added and small code enhancements were made.
+Upgrade of Mockito and JUnit to the latest released versions.
+
 ## Package com.putoet.resources
 Contains
 - ResourceLines: to read a resource file into a ```List<String>``` or ```List<T>```

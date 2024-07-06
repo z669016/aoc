@@ -4,7 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * A simple utility class to calculate the factors of a given number.
+ */
 public class Factors {
+    /**
+     * Calculate the factors of the given number.
+     * @param num The number to calculate the factors for
+     * @return A sorted list of factors
+     */
     public static List<Integer> list(int num) {
         final var factors = new ArrayList<Integer>();
 

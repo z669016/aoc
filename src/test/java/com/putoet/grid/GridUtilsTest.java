@@ -20,6 +20,19 @@ class GridUtilsTest {
     ));
 
     @Test
+    void ofFill() {
+        final var grid = GridUtils.of(List.of("1234", "56", "7", ""), '.');
+        final var list = GridUtils.toList(grid);
+        final var expected = List.of(
+                "1234",
+                "56..",
+                "7...",
+                "...."
+        );
+        assertEquals(expected, list);
+    }
+
+    @Test
     void copy() {
         final var copy = GridUtils.copy(NUMBERS);
         assertNotSame(NUMBERS, copy);
@@ -27,9 +40,14 @@ class GridUtilsTest {
     }
 
     @Test
-    void of() {
+    void string() {
         final var s = GridUtils.toString(NUMBERS);
         assertEquals("123456789", s);
+    }
+
+    @Test
+    void growNotSquare() {
+        assertThrows(IllegalArgumentException.class, () -> GridUtils.grow(new char[3][2], '.'));
     }
 
     @Test
@@ -49,6 +67,11 @@ class GridUtilsTest {
                 "........."
         );
         assertEquals(expected, list);
+    }
+
+    @Test
+    void rotateNotRectangular() {
+        assertThrows(IllegalArgumentException.class, () -> GridUtils.rotate(GridUtils.of(List.of("1234", "56", "7", ""))));
     }
 
     @Test
