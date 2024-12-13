@@ -18,6 +18,7 @@ Contains
 Contains
 - Factors: split a number into its factors, gcd (Greatest Common Denominator), lcm (Lowest Common Multiple)
 - Josephus: Answer to the [Josephus problem](https://www.youtube.com/watch?v=uCsD3ZGzMgE)  
+- Cramer: a class to solve a system of linear equations using [Cramer's rule](https://en.wikipedia.org/wiki/Cramer%27s_rule)
 
 ## Package com.putoet.grid
 Contains 
